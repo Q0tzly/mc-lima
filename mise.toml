@@ -1,2 +1,46 @@
 [tools]
 lima = "2.2.1"
+
+[tasks.init]
+description = "Initialize .env and data directories"
+run = "./scripts/init.sh"
+
+[tasks.up]
+description = "Start Lima VM and Minecraft Server"
+run = "./scripts/up.sh"
+
+[tasks.down]
+description = "Stop Minecraft Server and Lima VM"
+run = "./scripts/down.sh"
+
+[tasks.restart]
+description = "Restart Minecraft Server container"
+run = "./scripts/restart.sh"
+
+[tasks.status]
+description = "Show status of Lima VM, container, and connectivity"
+run = "./scripts/status.sh"
+
+[tasks.logs]
+description = "Follow Minecraft Server logs"
+run = "./scripts/logs.sh"
+
+[tasks.console]
+description = "Open interactive Minecraft server console (rcon-cli)"
+run = "./scripts/console.sh"
+
+[tasks.rcon]
+description = "Execute a single Minecraft command via RCON"
+run = "./scripts/rcon.sh"
+
+[tasks.backup]
+description = "Create a timestamped backup of server data"
+run = "./scripts/backup.sh"
+
+[tasks.shell]
+description = "Open an interactive shell inside the Lima VM"
+run = "./scripts/shell.sh"
+
+[tasks.destroy]
+description = "Delete the Lima VM (world data in ./data is retained)"
+run = "./scripts/destroy.sh"
