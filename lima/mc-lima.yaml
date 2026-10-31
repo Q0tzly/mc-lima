@@ -1,17 +1,21 @@
 # Lima VM configuration for mc-lima
-# Runs a lightweight Linux VM with Docker and mounts the workspace.
+# Runs a lightweight Alpine Linux VM with Docker and mounts the workspace.
+
+minimumLimaVersion: 2.0.0
 
 vmType: "vz"
-rosetta:
-  enabled: true
-  binfmt: true
+vmOpts:
+  vz:
+    rosetta:
+      enabled: true
+      binfmt: true
 
 cpus: 4
 memory: "6GiB"
 disk: "30GiB"
 
 base:
-  - template:docker
+  - template:alpine
 
 mountType: "virtiofs"
 mounts:
@@ -32,11 +36,19 @@ portForwards:
 provision:
   - mode: system
     script: |
-      #!/bin/bash
-      set -eux -o pipefail
-      # Ensure docker compose plugin is installed
-      if ! docker compose version >/dev/null 2>&1; then
-        export DEBIAN_FRONTEND=noninteractive
-        apt-get update
-        apt-get install -y docker-compose-plugin
-      fi
+      #!/bin/sh
+      set -eux
+      apk update
+      apk add docker docker-cli-compose
+      rc-update add docker boot
+      service docker start
+      # Add default lima user to docker group
+      addgroup "{{.User}}" docker
+
+probes:
+  - script: |
+      #!/bin/sh
+      set -eux
+      command -v docker >/dev/null 2>&1
+      docker info >/dev/null 2>&1
+    hint: See cloud-init logs in guest
