@@ -21,6 +21,11 @@ run = "./scripts/restart.sh"
 description = "Show status of Lima VM, container, and connectivity"
 run = "./scripts/status.sh"
 
+[tasks.ip]
+description = "Show connection IP addresses (localhost & LAN IP)"
+run = "./scripts/ip.sh"
+alias = "address"
+
 [tasks.logs]
 description = "Follow Minecraft Server logs"
 run = "./scripts/logs.sh"

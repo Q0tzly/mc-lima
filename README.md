@@ -50,6 +50,7 @@ mise run up
 | `mise run up` | Lima VM および Minecraft サーバーを起動します。 |
 | `mise run down` | サーバーを安全に停止し、Lima VM をシャットダウンして Mac のリソースを全解放します。<br>※ VM を落とさずサーバーコンテナのみ停止する場合は `--keep-vm` を付与。 |
 | `mise run status` | VM、コンテナ、サーバーの稼働状態、リッスンポート、設定概要を表示します。 |
+| `mise run ip` | 接続先のアドレス（This Mac 用の `127.0.0.1` や同一 Wi-Fi LAN 用 IP）を表示します。 |
 | `mise run logs` | サーバーログをストリーミング表示します（Ctrl+C で抜けます）。 |
 | `mise run console` | サーバーコンソールに対話的に接続します（`rcon-cli`）。`quit` で抜けます。 |
 | `mise run rcon "<cmd>"` | ワンショットで Minecraft コマンドを実行します（例: `mise run rcon "op Alice"`）。 |
