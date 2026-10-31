@@ -44,3 +44,8 @@ run = "./scripts/shell.sh"
 [tasks.destroy]
 description = "Delete the Lima VM (world data in ./data is retained)"
 run = "./scripts/destroy.sh"
+
+[tasks.help]
+description = "Show command reference and usage guide"
+run = "./scripts/help.sh"
+alias = "h"

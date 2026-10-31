@@ -57,6 +57,7 @@ mise run up
 | `mise run backup` | ワールドデータをフラッシュし、`./backups/` にタイムスタンプ付きアーカイブを作成します。 |
 | `mise run shell` | Lima VM 内部の Linux シェルに対話的に入ります（トラブルシューティング用）。 |
 | `mise run destroy` | Lima VM を完全削除します（`./data` のワールドデータは保持されます）。 |
+| `mise run help` | 利用可能なコマンドとクイックリファレンスを表示します。 |
 
 ---
 
