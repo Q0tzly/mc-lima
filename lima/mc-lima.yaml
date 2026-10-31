@@ -1,0 +1,42 @@
+# Lima VM configuration for mc-lima
+# Runs a lightweight Linux VM with Docker and mounts the workspace.
+
+vmType: "vz"
+rosetta:
+  enabled: true
+  binfmt: true
+
+cpus: 4
+memory: "6GiB"
+disk: "30GiB"
+
+base:
+  - template:docker
+
+mountType: "virtiofs"
+mounts:
+  - location: "~"
+    writable: true
+
+portForwards:
+  - guestPort: 25565
+    hostPort: 25565
+    proto: tcp
+  - guestPort: 25565
+    hostPort: 25565
+    proto: udp
+  - guestPort: 25575
+    hostPort: 25575
+    proto: tcp
+
+provision:
+  - mode: system
+    script: |
+      #!/bin/bash
+      set -eux -o pipefail
+      # Ensure docker compose plugin is installed
+      if ! docker compose version >/dev/null 2>&1; then
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update
+        apt-get install -y docker-compose-plugin
+      fi

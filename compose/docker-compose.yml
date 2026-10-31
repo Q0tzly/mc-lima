@@ -1,0 +1,32 @@
+services:
+  minecraft:
+    image: itzg/minecraft-server:latest
+    container_name: mc-server
+    restart: unless-stopped
+    ports:
+      - "25565:25565/tcp"
+      - "25565:25565/udp"
+      - "25575:25575/tcp"
+    environment:
+      EULA: "TRUE"
+      TYPE: ${SERVER_TYPE:-PAPER}
+      VERSION: ${SERVER_VERSION:-LATEST}
+      MEMORY: ${MEMORY:-4G}
+      MOTD: ${MOTD:-Minecraft Server on Lima}
+      DIFFICULTY: ${DIFFICULTY:-normal}
+      MAX_PLAYERS: ${MAX_PLAYERS:-20}
+      ONLINE_MODE: ${ONLINE_MODE:-TRUE}
+      ENABLE_RCON: "true"
+      RCON_PORT: 25575
+      RCON_PASSWORD: ${RCON_PASSWORD:-minecraft}
+      ENABLE_COMMAND_BLOCK: ${ENABLE_COMMAND_BLOCK:-true}
+      SPAWN_PROTECTION: ${SPAWN_PROTECTION:-0}
+      VIEW_DISTANCE: ${VIEW_DISTANCE:-10}
+      OPS: ${OPS:-}
+      # Sync file ownership with host user
+      UID: ${HOST_UID:-1000}
+      GID: ${HOST_GID:-1000}
+    volumes:
+      - ../data:/data
+    stdin_open: true
+    tty: true
