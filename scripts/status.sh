@@ -23,12 +23,12 @@ echo "=========================================================="
 echo ""
 echo "[Connection Addresses]"
 if nc -z 127.0.0.1 "${SERVER_PORT}" 2>/dev/null; then
-  printf "  This Mac:     \033[1;32m127.0.0.1:%s\033[0m (Online & Ready)\n" "${SERVER_PORT}"
+  printf "  This PC:      \033[1;32m127.0.0.1:%s\033[0m (Online & Ready)\n" "${SERVER_PORT}"
   if [[ -n "${LAN_IP}" ]]; then
     printf "  Same Wi-Fi:   \033[1;36m%s:%s\033[0m (For LAN / other devices)\n" "${LAN_IP}" "${SERVER_PORT}"
   fi
 else
-  printf "  This Mac:     127.0.0.1:%s \033[1;31m(Server is offline or starting)\033[0m\n" "${SERVER_PORT}"
+  printf "  This PC:      127.0.0.1:%s \033[1;31m(Server is offline or starting)\033[0m\n" "${SERVER_PORT}"
   if [[ -n "${LAN_IP}" ]]; then
     printf "  Same Wi-Fi:   %s:%s\n" "${LAN_IP}" "${SERVER_PORT}"
   fi
