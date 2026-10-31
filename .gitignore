@@ -1,0 +1,21 @@
+# Minecraft server runtime data
+/data/*
+!/data/.gitkeep
+
+# Environment configuration
+.env
+!.env.example
+
+# Backups
+/backups/*
+!/backups/.gitkeep
+
+# OS generated files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Lima runtime caches if created locally
+.lima/
